@@ -1,0 +1,9 @@
+---
+
+  - name: "Configure Default Policies common to most environments"
+    gather_facts: no
+    connection: local
+    hosts: fedlabaci
+    tasks:
+    - name: Import CDP Policy Tasks
+      import_tasks: tasks/task-cdp-neighbor-policies.yaml

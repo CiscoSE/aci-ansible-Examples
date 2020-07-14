@@ -1,0 +1,25 @@
+  - name: Create CDP Enabled Policy
+    aci_interface_policy_cdp:
+        host: "{{ aci_host }}"
+        username: "{{ aci_user_name }}"
+        private_key: "{{ aci_certificate_path }}"
+        certificate_name: "{{ aci_certiciate_name }}"
+        name: cdp-enable
+        validate_certs: no
+        state: present
+        # When admin_state is yes, CDP is enabled
+        admin_state: yes
+        description: "Anisible generated Base policy to Enable CDP"
+  - name: Create CDP Disabled Policy
+    aci_interface_policy_cdp:
+        host: "{{ aci_host }}"
+        username: "{{ aci_user_name }}"
+        private_key: "{{ aci_certificate_path }}"
+        certificate_name: "{{ aci_certiciate_name }}"
+        name: cdp-disable
+        validate_certs: no
+        state: present
+        # When admin_state is no, CDP is disabled
+        admin_state: no
+        description: "Anisible generated Base policy to disable CDP"
+
