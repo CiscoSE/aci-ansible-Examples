@@ -1,4 +1,5 @@
 ---
+  #This s really just an example file that highlights how to authenticate and get basic responses from Ansible
   - name: "Simple query for Tenate Information"
     gather_facts: no
     connection: local
@@ -6,6 +7,7 @@
     tasks:
     - name: Get Tenant
       aci_tenant:
+              # We assume that you have assigned the next four variables in an inventory file.
               hostname: "{{ aci_host }}"
               username: "{{ aci_user_name }}"
               private_key: "{{ aci_certificate_path }}"
