@@ -1,0 +1,18 @@
+---
+  - name: "Simple query for Tenate Information"
+    gather_facts: no
+    connection: local
+    hosts: fedlabaci
+    tasks:
+    - name: Get Tenant
+      aci_tenant:
+              hostname: "{{ aci_host }}"
+              username: "{{ aci_user_name }}"
+              private_key: "{{ aci_certificate_path }}"
+              certificate_name: "{{ aci_certiciate_name }}"
+              state: query
+              validate_certs: no
+      register: tenant_result
+    - name: Print Result
+      debug:
+              msg: "{{ tenant_result }}"
