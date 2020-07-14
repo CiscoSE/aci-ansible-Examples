@@ -10,3 +10,6 @@
 
     - name: Import LLDP Policy Tasks
       import_tasks: tasks/task-lldp-neighbor-policies.yaml
+
+    - name: Import LACP Policy Tasks
+      import_tasks: tasks/task-port-channel-policies.yaml

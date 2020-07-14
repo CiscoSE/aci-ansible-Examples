@@ -1,0 +1,38 @@
+  - name: Create Mode Active Port Channel Policy - Suspend Individual
+    aci_interface_policy_port_channel:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user_name }}"
+      private_key: "{{ aci_certificate_path }}"
+      certificate_name: "{{ aci_certiciate_name }}"
+      validate_certs: no
+      port_channel: lacp-active-suspend
+      state: present
+      suspend_individual: yes
+      symmetric_hash: no
+      min_links: 1
+      max_links: 16
+      mode: active
+      fast_select: yes
+      graceful_convergence: yes
+      load_defer: no
+      description: "Ansible generated policy. Commonly used with Fabric Interconnects."
+
+
+  - name: Create Mode Active Port Channel Policy - No Suspend Individual
+    aci_interface_policy_port_channel:
+      host: "{{ aci_host }}"
+      username: "{{ aci_user_name }}"
+      private_key: "{{ aci_certificate_path }}"
+      certificate_name: "{{ aci_certiciate_name }}"
+      validate_certs: no
+      port_channel: lacp-active-nosuspend
+      state: present
+      suspend_individual: no
+      symmetric_hash: no
+      min_links: 1
+      max_links: 16
+      mode: active
+      fast_select: yes
+      graceful_convergence: yes
+      load_defer: no
+      description: "Ansible generated policy. Commonly used for PXE boot configurations requiring LACP after PXE."
