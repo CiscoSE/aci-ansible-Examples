@@ -7,3 +7,6 @@
     tasks:
     - name: Import CDP Policy Tasks
       import_tasks: tasks/task-cdp-neighbor-policies.yaml
+
+    - name: Import LLDP Policy Tasks
+      import_tasks: tasks/task-lldp-neighbor-policies.yaml
