@@ -13,3 +13,6 @@
 
     - name: Import LACP Policy Tasks
       import_tasks: tasks/task-port-channel-policies.yaml
+    
+    - name: Import COOP Default Policy Task
+      import_tasks: tasks/task-default-coop-policy.yaml
