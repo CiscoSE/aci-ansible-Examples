@@ -1,0 +1,23 @@
+---
+
+- name: How to query a tenant
+  hosts: FEDLAB
+  gather_facts: no
+  tasks:
+  - name: Query all tenants
+    aci_tenant:
+      host: '{{ ansible_host }}'
+      username: '{{ ansible_user }}'
+      password: '{{ ansible_password }}'
+      validate_certs: no
+  
+      state: query
+    delegate_to: localhost
+    register: all_tenants
+
+  - name: "Process JSON"
+    set_fact:
+      tenant_output: "{{ (all_tenants.stdout | from_json) }}"
+
+  - debug:
+      var: tenant_output
