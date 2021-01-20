@@ -19,35 +19,29 @@ def getTenants(list):
             tenants.append(item['tenant'])
     return tenants
 
-def compareVrf():
-    return
-
 def getVrfs(csvList):
-    vrfs = {'tenant: [], VRF: []'}
+    vrfs = []
     for line in csvList:
         addLine = True
-        for onevrf in vrfs:
-            if compareVrf(lineTenant = line['tenant'], lineVrf = line['VRF'], vrfsTenant = onevrf['tenant'], vrfsVRF = onevrf['VRF']) == True:
+        for oneVRF in vrfs:
+            if line['tenant'] == oneVRF['tenant'] and line['VRF'] == oneVRF['VRF']:
                addLine = False
         if addLine == True:
-           vrfs['VRF'].append(line['VRF'])
-           vrfs['tenant'].append(line['tenant'])
-           print('We added one tenant')
+           vrfs.append({'tenant': line['tenant'], 'VRF': line['VRF']})
     return vrfs
 
 def processCSV():
     yaml = open(args.outputFilePath,'w')
 
     with open(args.inputFilePath, mode='r') as rawFile:
-        csvContent = csv.DictReader(rawFile)
-
+        csvContent = list(csv.DictReader(rawFile))
         #Generate Tenant List
-        #tenants = getTenants(csvContent)
+        tenants = getTenants(csvContent)
 
         #Generate VRF List
         vrfs = getVrfs(csvContent)
-        #print(vrfs['VRF'])
-
+        print(vrfs)
+        print(tenants)    
         #TODO Generate unique list of VRF and TENANT combinations 
         #TODO Write Tenant Creation to YAML
         #TODO Write VRF / Tenant creation to YAML
