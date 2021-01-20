@@ -51,13 +51,16 @@ def processCSV():
     yaml = open(args.outputFilePath,'w')
 
     with open(args.inputFilePath, mode='r') as rawFile:
+        #We open this as a list because we iterate it more than once
         csvContent = list(csv.DictReader(rawFile))
+
         #Generate Tenant List
         tenants = getTenants(csvContent)
 
         #Generate VRF List
         vrfs = getVrfs(csvContent)
 
+        #Write out data for various elements.
         writeTenants(tenants=tenants, yaml=yaml)
         writeVrfs(vrfs=vrfs, yaml=yaml)
         #TODO Write VRF / Tenant creation to YAML
