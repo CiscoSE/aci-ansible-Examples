@@ -1,5 +1,5 @@
 #Requires Python 3.x 
-import csv, sys, argparse
+import csv, sys, argparse, collections
 
 #Argument Processing
 
@@ -17,14 +17,23 @@ def getTenants(list):
     for item in list:
         if item['tenant'] not in tenants:
             tenants.append(item['tenant'])
-            print(item['tenant'])
     return tenants
 
-def getVrfs(list):
-    vrfs = {}
-    for line in list:
-        if line
+def compareVrf():
     return
+
+def getVrfs(csvList):
+    vrfs = {'tenant: [], VRF: []'}
+    for line in csvList:
+        addLine = True
+        for onevrf in vrfs:
+            if compareVrf(lineTenant = line['tenant'], lineVrf = line['VRF'], vrfsTenant = onevrf['tenant'], vrfsVRF = onevrf['VRF']) == True:
+               addLine = False
+        if addLine == True:
+           vrfs['VRF'].append(line['VRF'])
+           vrfs['tenant'].append(line['tenant'])
+           print('We added one tenant')
+    return vrfs
 
 def processCSV():
     yaml = open(args.outputFilePath,'w')
@@ -33,10 +42,11 @@ def processCSV():
         csvContent = csv.DictReader(rawFile)
 
         #Generate Tenant List
-        tenants = getTenants(csvContent)
+        #tenants = getTenants(csvContent)
 
         #Generate VRF List
         vrfs = getVrfs(csvContent)
+        #print(vrfs['VRF'])
 
         #TODO Generate unique list of VRF and TENANT combinations 
         #TODO Write Tenant Creation to YAML
