@@ -27,8 +27,25 @@ def getVrfs(csvList):
             if line['tenant'] == oneVRF['tenant'] and line['VRF'] == oneVRF['VRF']:
                addLine = False
         if addLine == True:
-           vrfs.append({'tenant': line['tenant'], 'VRF': line['VRF']})
+           vrfs.append({'tenant': line['tenant'], 'VRF': line['VRF'], 'RP': line['RP']})
     return vrfs
+
+def writeTenants(tenants, yaml):
+    yaml.write('tenants:\n')
+    for tenant in tenants:
+        yaml.write(f" - Tenant: {tenant}\n")
+    return
+
+def writeVrfs(vrfs, yaml):
+    yaml.write('vrfs:\n')
+    for vrf in vrfs:
+        yaml.write(f" - vrf: {vrf['VRF']}\n")
+        yaml.write(f"   tenant: {vrf['tenant']}\n")
+
+        #If the RP field is blank or equal to NA, we don't need this field
+        if vrf['RP'] != '' and vrf['RP'] != 'NA':
+            yaml.write(f"   rp: {vrf['RP']}\n")
+    return
 
 def processCSV():
     yaml = open(args.outputFilePath,'w')
@@ -40,11 +57,11 @@ def processCSV():
 
         #Generate VRF List
         vrfs = getVrfs(csvContent)
-        print(vrfs)
-        print(tenants)    
-        #TODO Generate unique list of VRF and TENANT combinations 
-        #TODO Write Tenant Creation to YAML
+
+        writeTenants(tenants=tenants, yaml=yaml)
+        writeVrfs(vrfs=vrfs, yaml=yaml)
         #TODO Write VRF / Tenant creation to YAML
         #TODO Write Bridge Domains to YAML
+        #TODO Write AP to Proper Tenants
         #TODO Write EPGs to file.
 processCSV()
