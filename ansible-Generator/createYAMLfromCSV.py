@@ -12,14 +12,17 @@ argsParse.add_argument('-i', '--input-file',  action='store', dest='inputFilePat
 argsParse.add_argument('-o', '--output-file', action='store', dest='outputFilePath', required=True, help='Destination File for CSV Data')
 args = argsParse.parse_args()
 
-def getTenants(list):
+def getTenants(yaml, csvList):
+    # Return only one instance of each tenant name
     tenants = []
-    for item in list:
-        if item['tenant'] not in tenants:
-            tenants.append(item['tenant'])
-    return tenants
+    for tenant in csvList:
+        if tenant['tenant'] not in tenants:
+            tenants.append(tenant['tenant'])
+    writeTenants(tenants = tenants, yaml = yaml)
+    return
 
-def getVrfs(csvList):
+def getVrfs(yaml, csvList):
+    # Return only on instance of each VRF / Tenant Combination
     vrfs = []
     for line in csvList:
         addLine = True
@@ -28,15 +31,18 @@ def getVrfs(csvList):
                addLine = False
         if addLine == True:
            vrfs.append({'tenant': line['tenant'], 'VRF': line['VRF'], 'RP': line['RP']})
-    return vrfs
+    writeVrfs(vrfs = vrfs, yaml = yaml)    
+    return
 
 def writeTenants(tenants, yaml):
+    #Write YAML to file for each tenant to be created.
     yaml.write('tenants:\n')
     for tenant in tenants:
         yaml.write(f" - Tenant: {tenant}\n")
     return
 
 def writeVrfs(vrfs, yaml):
+    #Write YAML to file for each vrf to be created
     yaml.write('vrfs:\n')
     for vrf in vrfs:
         yaml.write(f" - vrf: {vrf['VRF']}\n")
@@ -54,15 +60,17 @@ def processCSV():
         #We open this as a list because we iterate it more than once
         csvContent = list(csv.DictReader(rawFile))
 
-        #Generate Tenant List
-        tenants = getTenants(csvContent)
+        #Generate Tenant List and write to YAML
+        getTenants(yaml = yaml, csvList = csvContent)
 
-        #Generate VRF List
-        vrfs = getVrfs(csvContent)
+        #Generate VRF List and write to YAML
+        getVrfs(yaml = yaml, csvList = csvContent)
+        
+
 
         #Write out data for various elements.
-        writeTenants(tenants=tenants, yaml=yaml)
-        writeVrfs(vrfs=vrfs, yaml=yaml)
+        #writeTenants(tenants=tenants, yaml=yaml)
+        #writeVrfs(vrfs=vrfs, yaml=yaml)
         #TODO Write VRF / Tenant creation to YAML
         #TODO Write Bridge Domains to YAML
         #TODO Write AP to Proper Tenants
