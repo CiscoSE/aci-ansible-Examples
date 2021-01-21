@@ -82,8 +82,6 @@ def writeBridgeDomains(yaml, bd_dict, scope='public'):
         yaml.write(f'   vrf: {VRF}\n')
         yaml.write(f'   scope: {scope}\n')
         yaml.write(f'   L3Out: {l3Out}\n')
-
-
     return
 
 def processCSV():
