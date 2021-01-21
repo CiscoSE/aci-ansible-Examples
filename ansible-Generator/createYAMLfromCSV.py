@@ -63,10 +63,33 @@ def writeApps(yaml, app_dict):
         yaml.write(f'   tenant: {tenant}\n')
     return
 
-def processCSV():
-    yaml = open(args.outputFilePath,'w')
+def getBridgeDomains(yaml, csvList):
+    bd_dict = {}
+    for line in csvList:
+        if (line['tenant'], line['VRF'], line['bridgeDomain'], line['gateway'], line['mask'], line['l3Out']) not in bd_dict:
+            bd_dict[(line['tenant'], line['VRF'], line['bridgeDomain'], line['gateway'], line['mask'], line['l3Out'])] = []
+    writeBridgeDomains(yaml = yaml, bd_dict = bd_dict)
+    return
 
-    with open(args.inputFilePath, mode='r') as rawFile:
+def writeBridgeDomains(yaml, bd_dict, scope='public'):
+    yaml.write('bridge_domains:\n')
+    for item in bd_dict:
+        (tenant, VRF, bridgeDomain, gateway, mask, l3Out) = item
+        yaml.write(f' - bd: {bridgeDomain}\n')
+        yaml.write(f'   gateway: {gateway}\n')
+        yaml.write(f'   mask: {mask}\n')
+        yaml.write(f'   tenant: {tenant}\n')
+        yaml.write(f'   vrf: {VRF}\n')
+        yaml.write(f'   scope: {scope}\n')
+        yaml.write(f'   L3Out: {l3Out}\n')
+
+
+    return
+
+def processCSV():
+    yaml = open(f'{args.outputFilePath}','w')
+
+    with open(f'{args.inputFilePath}', mode='r', encoding="utf-8-sig") as rawFile:
         #We open this as a list because we iterate it more than once
         csvContent = list(csv.DictReader(rawFile))
 
@@ -79,8 +102,8 @@ def processCSV():
         #Generate Application Profile List and write to Yaml
         getApps(yaml = yaml, csvList = csvContent)
         
-        #TODO Write APs
+        #Generate Bridge Domain Profile List and write to Yaml
+        getBridgeDomains(yaml = yaml, csvList = csvContent)
         #TODO Write Bridge Domains to YAML
-        #TODO Write AP to Proper Tenants
         #TODO Write EPGs to file.
 processCSV()
