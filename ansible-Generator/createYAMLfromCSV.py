@@ -21,19 +21,6 @@ def getTenants(yaml, csvList):
     writeTenants(tenants = tenants, yaml = yaml)
     return
 
-def getVrfs(yaml, csvList):
-    # Return only on instance of each VRF / Tenant Combination
-    vrfs = []
-    for line in csvList:
-        addLine = True
-        for oneVRF in vrfs:
-            if line['tenant'] == oneVRF['tenant'] and line['VRF'] == oneVRF['VRF']:
-               addLine = False
-        if addLine == True:
-           vrfs.append({'tenant': line['tenant'], 'VRF': line['VRF'], 'RP': line['RP']})
-    writeVrfs(vrfs = vrfs, yaml = yaml)    
-    return
-
 def writeTenants(tenants, yaml):
     #Write YAML to file for each tenant to be created.
     yaml.write('tenants:\n')
@@ -41,17 +28,26 @@ def writeTenants(tenants, yaml):
         yaml.write(f" - Tenant: {tenant}\n")
     return
 
-def writeVrfs(vrfs, yaml):
-    #Write YAML to file for each vrf to be created
-    yaml.write('vrfs:\n')
-    for vrf in vrfs:
-        yaml.write(f" - vrf: {vrf['VRF']}\n")
-        yaml.write(f"   tenant: {vrf['tenant']}\n")
-
-        #If the RP field is blank or equal to NA, we don't need this field
-        if vrf['RP'] != '' and vrf['RP'] != 'NA':
-            yaml.write(f"   rp: {vrf['RP']}\n")
+def getVrfs(csvList, yaml):
+    vrf_dict = {}
+    for line in csvList:
+        if (line['tenant'], line['VRF']) not in vrf_dict or (line['RP'] != 'NA' and line['RP'] != ''):
+            vrf_dict[(line['tenant'], line['VRF'])] = line['RP']
+            print(vrf_dict)
+    writeVrfs(vrf_dict = vrf_dict, yaml = yaml)
     return
+
+
+def writeVrfs(vrf_dict, yaml):
+    yaml.write('vrfs:\n')
+    for item in vrf_dict.items():
+        (tenant, vrf), rp = item
+        yaml.write(f" - vrf: {vrf}\n")
+        yaml.write(f"   tenant: {tenant}\n")
+
+        if rp != 'NA':
+            yaml.write(f"   rp: {rp}\n")
+
 
 def processCSV():
     yaml = open(args.outputFilePath,'w')
