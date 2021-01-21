@@ -1,0 +1,13 @@
+﻿bridgeDomain,gateway,mask,tenant,VRF,appProfile,description,egpName,domain,domainType,contract,encap,encapType,filter,l3Out,multiVRF,RP
+BD_1200,172.16.10.254,22,SERVICES,services-vrf,Management,ESXi Management EPG,EPG_1200,Infrastructure,phys,SERVICES-Contract,1200,vlan,services-allow_all,L3Out_OOB,YES,10.200.1.1
+BD_1201,172.16.6.254,24,SERVICES,services-vrf,Management,HX Storage Data EPG,EPG_1201,Infrastructure,phys,SERVICES-Contract,1201,vlan,services-allow_all,NA,NA,
+BD_1202,172.16.7.254,24,SERVICES,services-vrf,Management,ESXi vMtion EPG,EPG_1202,Infrastructure,phys,SERVICES-Contract,1202,vlan,services-allow_all,NA,NA,NA
+BD_1203,172.16.5.254,24,SERVICES,services-vrf,Management,HX Storage Data EPG HX-2,EPG_1203,Infrastructure,phys,SERVICES-Contract,1203,vlan,services-allow_all,NA,NA,NA
+BD_199,10.10.199.1,24,EXAMPLE,example-vrf,EXAMPLE,Vlan 199,EPG_199,EXAMPLE-hx-dvs,vmm,EXAMPLE-Contract,199,vlan,EXAMPLE-allow_all,NA,YES,NA
+BD_100,10.10.100.1,24,EXAMPLE,example-vrf,EXAMPLE2,Vlan 100,EPG_100,EXAMPLE-hx-dvs,vmm,EXAMPLE-Contract,100,vlan,EXAMPLE-allow_all,NA,YES,NA
+BD_225,10.10.225.1,24,EXAMPLE,example-vrf,EXAMPLE,Vlan 225,EPG_225,EXAMPLE-hx-dvs,vmm,EXAMPLE-Contract,225,vlan,EXAMPLE-allow_all,NA,YES,NA
+BD_235,10.10.235.1,24,EXAMPLE,example-vrf,EXAMPLE,Vlan 235,EPG_235,EXAMPLE-hx-dvs,vmm,EXAMPLE-Contract,235,vlan,EXAMPLE-allow_all,NA,YES,NA
+BD_3131,10.10.31.1,24,EXAMPLE,example-vrf,EXAMPLE,Vlan 3131,EPG_3131,EXAMPLE-hx-dvs,vmm,EXAMPLE-Contract,3131,vlan,EXAMPLE-allow_all,NA,YES,NA
+BD_12,10.10.12.1,28,EXAMPLE,example-vrf,EXAMPLE,Vlan 12,EPG_12,EXAMPLE-hx-dvs,vmm,EXAMPLE-Contract,12,vlan,EXAMPLE-allow_all,NA,YES,NA
+BD_200,10.10.200.1,24,EXAMPLE,example-vrf,EXAMPLE,Vlan 200,EPG_200,EXAMPLE-hx-dvs,vmm,EXAMPLE-Contract,200,vlan,EXAMPLE-allow_all,NA,YES,NA
+BD_30,10.10.30.1,24,EXAMPLE,example-vrf,EXAMPLE,Vlan 30,EPG_30,EXAMPLE-hx-dvs,vmm,EXAMPLE-Contract,30,vlan,EXAMPLE-allow_all,NA,YES,NA
