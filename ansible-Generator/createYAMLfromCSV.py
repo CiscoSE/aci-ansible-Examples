@@ -33,7 +33,6 @@ def getVrfs(csvList, yaml):
     for line in csvList:
         if (line['tenant'], line['VRF']) not in vrf_dict or (line['RP'] != 'NA' and line['RP'] != ''):
             vrf_dict[(line['tenant'], line['VRF'])] = line['RP']
-            print(vrf_dict)
     writeVrfs(vrf_dict = vrf_dict, yaml = yaml)
     return
 
@@ -48,6 +47,21 @@ def writeVrfs(vrf_dict, yaml):
         if rp != 'NA':
             yaml.write(f"   rp: {rp}\n")
 
+def getApps(csvList, yaml):
+    app_dict = {}
+    for line in csvList:
+        if (line['tenant'], line['appProfile']) not in app_dict:
+            app_dict[(line['tenant'],line['appProfile'])] = []
+    writeApps(yaml=yaml, app_dict=app_dict)
+    return
+
+def writeApps(yaml, app_dict):
+    yaml.write('aps:\n')
+    for item in app_dict:
+        (tenant, app) = item
+        yaml.write(f' - ap: {app}\n')
+        yaml.write(f'   tenant: {tenant}\n')
+    return
 
 def processCSV():
     yaml = open(args.outputFilePath,'w')
@@ -61,13 +75,11 @@ def processCSV():
 
         #Generate VRF List and write to YAML
         getVrfs(yaml = yaml, csvList = csvContent)
+
+        #Generate Application Profile List and write to Yaml
+        getApps(yaml = yaml, csvList = csvContent)
         
-
-
-        #Write out data for various elements.
-        #writeTenants(tenants=tenants, yaml=yaml)
-        #writeVrfs(vrfs=vrfs, yaml=yaml)
-        #TODO Write VRF / Tenant creation to YAML
+        #TODO Write APs
         #TODO Write Bridge Domains to YAML
         #TODO Write AP to Proper Tenants
         #TODO Write EPGs to file.
