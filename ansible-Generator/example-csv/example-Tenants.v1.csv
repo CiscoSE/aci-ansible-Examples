@@ -1,5 +1,5 @@
-﻿bridgeDomain,gateway,mask,tenant,VRF,appProfile,description,egpName,domain,domainType,contract,encap,encapType,filter,l3Out,multiVRF,RP
-BD_1200,172.16.10.254,22,SERVICES,services-vrf,Management,ESXi Management EPG,EPG_1200,Infrastructure,phys,SERVICES-Contract,1200,vlan,services-allow_all,L3Out_OOB,YES,10.200.1.1
+﻿bridgeDomain,gateway,mask,tenant,VRF,appProfile,description,epgName,domain,domainType,contract,encap,encapType,filter,l3Out,multiVRF,RP
+BD_1200,172.16.10.254,22,SERVICES,services-vrf,Management,ESXi Management EPG,Lw,Infrastructure,phys,SERVICES-Contract,1200,vlan,services-allow_all,L3Out_OOB,YES,10.200.1.1
 BD_1201,172.16.6.254,24,SERVICES,services-vrf,Management,HX Storage Data EPG,EPG_1201,Infrastructure,phys,SERVICES-Contract,1201,vlan,services-allow_all,NA,NA,
 BD_1202,172.16.7.254,24,SERVICES,services-vrf,Management,ESXi vMtion EPG,EPG_1202,Infrastructure,phys,SERVICES-Contract,1202,vlan,services-allow_all,NA,NA,NA
 BD_1203,172.16.5.254,24,SERVICES,services-vrf,Management,HX Storage Data EPG HX-2,EPG_1203,Infrastructure,phys,SERVICES-Contract,1203,vlan,services-allow_all,NA,NA,NA
