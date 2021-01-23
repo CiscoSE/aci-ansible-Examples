@@ -84,6 +84,42 @@ def writeBridgeDomains(yaml, bd_dict, scope='public'):
         yaml.write(f'   L3Out: {l3Out}\n')
     return
 
+def getEPGs(yaml, csvList):
+    epg_dict = {}
+    for line in csvList:
+        epg_dict[(line['tenant'],
+            line['epgName'],
+            line['bridgeDomain'],
+            line['gateway'],
+            line['mask'],
+            line['description'],
+            line['multiVRF'],
+            line['domain'],
+            line['domainType'],
+            line['appProfile'],
+            line['encap'],
+            line['encapType'])] = []
+    writeEPGs(yaml = yaml, epg_dict = epg_dict)
+    return
+
+def writeEPGs(yaml, epg_dict):
+    yaml.write('epgs:\n')
+    for item in epg_dict:
+        (tenant, epgName, bridgeDomain, gateway, mask, description, multiVRF, domain, domainType, appProfile, encap, encapType) = item
+        yaml.write(f' - epg: {epgName}\n')
+        yaml.write(f'   tenant: {tenant}\n')
+        yaml.write(f'   ap: {appProfile}\n')
+        yaml.write(f'   bd: {bridgeDomain}\n')
+        yaml.write(f'   domain: {domain}\n')
+        yaml.write(f'   domainType: {domainType}\n')
+        yaml.write(f'   encaps: {encap}\n')
+        yaml.write(f'   encaptype: {encapType}\n')
+        yaml.write(f'   gateway: {gateway}\n')
+        yaml.write(f'   mask: {mask}\n')
+        yaml.write(f'   description: {description}\n')
+        yaml.write(f'   multivrf: {multiVRF}\n')
+    return
+
 def processCSV():
     yaml = open(f'{args.outputFilePath}','w')
 
@@ -102,6 +138,7 @@ def processCSV():
         
         #Generate Bridge Domain Profile List and write to Yaml
         getBridgeDomains(yaml = yaml, csvList = csvContent)
-        #TODO Write Bridge Domains to YAML
-        #TODO Write EPGs to file.
+
+        #Generate EPGs and write Yaml
+        getEPGs(yaml = yaml, csvList = csvContent)
 processCSV()
