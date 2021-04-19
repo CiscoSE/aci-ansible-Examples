@@ -1,0 +1,9 @@
+---
+
+  - name: "Test Interface Policy Group"
+    gather_facts: no
+    connection: local
+    hosts: fedlabaci
+    tasks:
+    - name: Import CDP Policy Tasks
+      import_tasks: tasks/task-create-vpc-Interface-Policy-Group.yaml
