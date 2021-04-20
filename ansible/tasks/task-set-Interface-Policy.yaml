@@ -3,7 +3,7 @@
         host: "{{ aci_host }}"
         username: "{{ aci_user_name }}"
         private_key: "{{ aci_certificate_path }}"
-        certificate_name: "{{ aci_certiciate_name }}"
+        certificate_name: "{{ aci_certificate_name }}"
         validate_certs: "no"
         access_port_selector: "{{ access_port_selector_name }}"
         port_blk: "{{ port_block_name }}"

@@ -3,7 +3,7 @@
     hostname: "{{ aci_host }}"
     username: "{{ aci_username }}"
     private_key: "{{ aci_certificate_path }}"
-    certificate_name: "{{ aci_certiciate_name }}"
+    certificate_name: "{{ aci_certificate_name }}"
     validate_certs: no
     path: /api/node/mo/uni/userext/user-ansible/userdomain-all.json
     method: post
