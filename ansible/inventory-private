@@ -1,4 +1,0 @@
-[all:vars]
-
-[fedlabaci]
-FEDLAB-APIC1	aci_host=10.82.66.225 aci_user_name=ansible aci_certificate_path=pki/ansible.key aci_certiciate_name=Ansible
