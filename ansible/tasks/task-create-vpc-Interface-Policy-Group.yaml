@@ -1,13 +1,14 @@
-  - name: Create CDP Enabled Policy
+  - name: Create Interface Policy
     aci_interface_policy_leaf_policy_group:
         host: "{{ aci_host }}"
         username: "{{ aci_user_name }}"
         private_key: "{{ aci_certificate_path }}"
         certificate_name: "{{ aci_certiciate_name }}"
         validate_certs: "no"
-        aep: "FEDLAB-AEP"
-        cdp_policy: "cdp-enable"
-        port_channel_policy: "lacp-active"
-        policy_group: "Sam-Test-Policy-Group"
-        lag_type: "node"
+        aep: "{{ aaep_name }}"
+        cdp_policy: "{{ cdp_policy_name }}"
+        port_channel_policy: "{{ port_channel_policy_name }}"
+        policy_group: "{{ interface_policy_group_name }}"
+        lag_type: "{{ lag_type_assignment }}"
+        state: present
 

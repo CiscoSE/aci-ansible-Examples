@@ -1,0 +1,17 @@
+  - name: Assign Policy Group to Port Selector
+    aci_access_port_to_interface_policy_leaf_profile:
+        host: "{{ aci_host }}"
+        username: "{{ aci_user_name }}"
+        private_key: "{{ aci_certificate_path }}"
+        certificate_name: "{{ aci_certiciate_name }}"
+        validate_certs: "no"
+        access_port_selector: "{{ access_port_selector_name }}"
+        port_blk: "{{ port_block_name }}"
+        interface_profile: "{{ interface_profile_name }}"
+        interface_type: "{{ interface_type_ident }}"
+        type: "leaf"
+        policy_group: "{{ interface_policy_group_name }}"
+        from_port: "{{ from_port_number }}"
+        to_port: "{{ to_port_number }}"
+        state: present
+

@@ -4,6 +4,41 @@
     gather_facts: no
     connection: local
     hosts: fedlabaci
+    vars:
+      # This is the name of the Interface Policy Group that gets created
+      # We reference it once when we create it, and once when we assign the policy to the interfaces.
+      interface_policy_group_name: "Sam-Test-Policy-Group" 
+      # The AEP is only assigned in the Interface Policy Groups, and authorizes domains for use by the interface.
+      aaep_name:  "FEDLAB-AEP"
+      # Provided as an example for enabling or disabling CDP on an interface.
+      cdp_policy_name: "cdp-enable"
+      # For assigning port channel mode.
+      port_channel_policy_name: "lacp-active"
+      # Three options here:
+      #    node = vpc
+      #    link = port channel
+      #    leaf = access port
+      lag_type_assignment: "node"
+      # This is the access port selector name created under the interface profile 
+      access_port_selector_name: "VPC-Test"
+      # The port block name is not visible outside of the JSON or XML, but must be unique for each entry.
+      port_block_name: "port1"
+      # The interface profile referenced here is where the port selector will be created, and must already exist
+      interface_profile_name: "101-102"
+      # Following tells Ansible which policy group area to find the interface policy group.
+      # Several options are possible:
+      #   vpc
+      #   fex
+      #   breakout
+      #   port_channel
+      #   switch_port (Default)  
+      interface_type_ident: "vpc"
+      # I never recommend setting a range for interfaces in case you need to change the range later. 
+      # This determines which ports are being added to the interface selector
+      from_port_number: "12"
+      to_port_number: "12"
     tasks:
-    - name: Import CDP Policy Tasks
+    - name: Create Interface Policy Group
       import_tasks: tasks/task-create-vpc-Interface-Policy-Group.yaml
+    - name: Assign Interface Policy Profile to interface selector
+      import_tasks: tasks/task-set-Interface-Policy.yaml
