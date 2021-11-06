@@ -3,8 +3,9 @@ FROM centos:latest
 
 # git and vim are not required but commonly used
 
-# Requirements for Ansible and the ucs sdks
-RUN dnf install epel-release python3 python3-pip git vim -y && \
+# Requirements for Ansible and the ACI sdks
+RUN dnf update -y && \
+dnf install epel-release python38 python3-pip git vim -y && \
 pip3 install --upgrade pip
 
 # Install the Ansible and UCS compenents.
