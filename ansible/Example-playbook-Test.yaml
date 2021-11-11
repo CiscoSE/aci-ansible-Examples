@@ -1,5 +1,6 @@
 ---
 - name: Check Tenants 
+  hosts: localhost
   vars:
     aci_host: 1.1.1.1
     aci_user_name: Ansible
