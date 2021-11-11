@@ -1,6 +1,6 @@
 ---
 - name: Check Tenants 
-  hosts: KCDemo
+  hosts: Example
   gather_facts: no
   connection: local
   tasks:
