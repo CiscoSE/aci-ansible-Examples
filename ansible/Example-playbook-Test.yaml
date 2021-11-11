@@ -1,6 +1,10 @@
 ---
 - name: Check Tenants 
-  hosts: Example
+  vars:
+    aci_host: 1.1.1.1
+    aci_user_name: Ansible
+    aci_certificate_name: Ansible
+    aci_certificate_path: /root/certs/ansible.key
   gather_facts: no
   connection: local
   tasks:
