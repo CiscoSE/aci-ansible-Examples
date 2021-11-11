@@ -15,4 +15,3 @@
       validate_certs: no 
       private_key: "{{ aci_certificate_path }}"
     delegate_to: localhost
-    register: query_result
