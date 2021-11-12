@@ -9,7 +9,8 @@
         state: present
         # When admin_state is yes, CDP is enabled
         admin_state: yes
-        description: "Anisible generated Base policy to Enable CDP"
+        description: "Ansible generated Base policy to Enable CDP"
+        use_proxy: no
   - name: Create CDP Disabled Policy
     aci_interface_policy_cdp:
         host: "{{ aci_host }}"
@@ -22,4 +23,5 @@
         # When admin_state is no, CDP is disabled
         admin_state: no
         description: "Anisible generated Base policy to disable CDP"
+        use_proxy: no
 
