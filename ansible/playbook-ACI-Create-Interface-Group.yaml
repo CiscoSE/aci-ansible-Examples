@@ -12,8 +12,9 @@
       aaep_name:  "FEDLAB-AEP"
       # Provided as an example for enabling or disabling CDP on an interface.
       cdp_policy_name: "cdp-enable"
-      # For assigning port channel mode.
-      port_channel_policy_name: "lacp-active"
+      # For assigning port channel mode. We are using the same name as was assigned in the 
+      # playbook-ACI-Default-Policies.yaml playbook.
+      port_channel_policy_name: "lacp-active-nosuspend"
       # Three options here:
       #    node = vpc
       #    link = port channel
