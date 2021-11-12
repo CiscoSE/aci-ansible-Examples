@@ -22,6 +22,6 @@
         state: present
         # When admin_state is no, CDP is disabled
         admin_state: no
-        description: "Anisible generated Base policy to disable CDP"
+        description: "Ansible generated Base policy to disable CDP"
         use_proxy: no
 
