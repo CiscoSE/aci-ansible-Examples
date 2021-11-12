@@ -1,0 +1,9 @@
+  - name: "Pools, Domains and AEP Configuration"
+    gather_facts: no
+    connection: local
+    hosts: fedlabaci
+    vars:
+     aep_name: "FEDLAB-AEP"
+    tasks:
+    - name: "Create AEP {{ aep_name }}"
+      import_tasks: tasks/task-create-aep.yaml  
