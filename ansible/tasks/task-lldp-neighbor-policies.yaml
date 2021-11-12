@@ -9,6 +9,8 @@
       receive_state: yes
       transmit_state: yes
       description: Anisible generated Base policy to Enable LLDP bi-directionally
+      use_proxy: no
+    delegate_to: localhost
   - name: Create LLDP Disabled Policy
     aci_interface_policy_lldp:
       host: "{{ aci_host }}"
@@ -20,4 +22,5 @@
       receive_state: no
       transmit_state: no
       description: Anisible generated Base policy to disable LLDP bi-directionally
-
+      use_proxy: no
+    delegate_to: localhost
