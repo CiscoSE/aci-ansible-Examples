@@ -11,6 +11,7 @@
         admin_state: yes
         description: "Ansible generated Base policy to Enable CDP"
         use_proxy: no
+    delegate_to: localhost
   - name: Create CDP Disabled Policy
     aci_interface_policy_cdp:
         host: "{{ aci_host }}"
@@ -24,4 +25,4 @@
         admin_state: no
         description: "Ansible generated Base policy to disable CDP"
         use_proxy: no
-
+    delegate_to: localhost
