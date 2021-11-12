@@ -16,7 +16,8 @@
       graceful_convergence: yes
       load_defer: no
       description: "Ansible generated policy. Commonly used with Fabric Interconnects."
-
+      use_proxy: no
+    delegate_to: localhost
 
   - name: Create Mode Active Port Channel Policy - No Suspend Individual
     aci_interface_policy_port_channel:
@@ -36,3 +37,5 @@
       graceful_convergence: yes
       load_defer: no
       description: "Ansible generated policy. Commonly used for PXE boot configurations requiring LACP after PXE."
+      use_proxy: no
+    delegate_to: localhost
