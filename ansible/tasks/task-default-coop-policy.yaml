@@ -5,7 +5,7 @@
     private_key: "{{ aci_certificate_path }}"
     certificate_name: "{{ aci_certificate_name }}"
     validate_certs: no
-    path: /api/node/mo/uni/userext/user-Ansible/userdomain-all.json
+    path: /api/node/mo/uni/fabric/pol-default.json
     method: post
     use_proxy: no
     content: |
