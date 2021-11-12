@@ -1,7 +1,7 @@
 - name: "Modify COOP Policy Default on {{ inventory_hostname }} "
   aci_rest:
     hostname: "{{ aci_host }}"
-    username: "{{ aci_username }}"
+    username: "{{ aci_user_name }}"
     private_key: "{{ aci_certificate_path }}"
     certificate_name: "{{ aci_certificate_name }}"
     validate_certs: no
@@ -16,6 +16,8 @@
             }
          }
       }
+    use_proxy: no
+  delegate_to: localhost
 
       
 
