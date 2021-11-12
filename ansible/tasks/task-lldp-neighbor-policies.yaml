@@ -8,7 +8,7 @@
       lldp_policy: lldp-enable
       receive_state: yes
       transmit_state: yes
-      description: Anisible generated Base policy to Enable LLDP bi-directionally
+      description: Ansible generated Base policy to Enable LLDP bi-directionally
       use_proxy: no
     delegate_to: localhost
   - name: Create LLDP Disabled Policy
@@ -21,6 +21,6 @@
       lldp_policy: lldp-disable
       receive_state: no
       transmit_state: no
-      description: Anisible generated Base policy to disable LLDP bi-directionally
+      description: Ansible generated Base policy to disable LLDP bi-directionally
       use_proxy: no
     delegate_to: localhost
