@@ -1,0 +1,14 @@
+- name: Add a new VLAN pool
+  cisco.aci.aci_vlan_pool:
+    # This task expects three variables beyond authentication
+    #     vlan_pool_name - The name of the pool to be created
+    #     vlan_pool_description - A description for the pool
+    #     vlan_pool_allocation_mode - Must be static or dynamic 
+    hostname: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    pool: "{{ vlan_pool_name }}"
+    pool_allocation_mode: "{{ vlan_pool_allocation_mode }}"
+    description: "{{ vlan_pool_description }}"
+    state: present
+  delegate_to: localhost
