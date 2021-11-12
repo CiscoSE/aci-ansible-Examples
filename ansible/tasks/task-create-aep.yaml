@@ -1,0 +1,11 @@
+- name: "Add a new AEP {{ aep_name }}"
+  cisco.aci.aci_aep:
+    host: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
+    aep: "{{ aep_name }}"
+    description: default
+    infra_vlan: false
+    state: present
+  delegate_to: localhost
