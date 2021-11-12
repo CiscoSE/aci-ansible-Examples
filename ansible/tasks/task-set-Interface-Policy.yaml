@@ -14,4 +14,7 @@
         from_port: "{{ from_port_number }}"
         to_port: "{{ to_port_number }}"
         state: present
+        use_proxy: no
+    delegate_to: localhost
+
 

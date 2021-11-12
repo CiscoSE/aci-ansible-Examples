@@ -11,4 +11,6 @@
         policy_group: "{{ interface_policy_group_name }}"
         lag_type: "{{ lag_type_assignment }}"
         state: present
+        use_proxy: no
+    delegate_to: localhost
 
