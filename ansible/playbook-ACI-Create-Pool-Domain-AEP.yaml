@@ -4,6 +4,10 @@
     hosts: fedlabaci
     vars:
      aep_name: "FEDLAB-AEP"
+     vlan_pool_name: "Demo"
+     vlan_pool_description: "Demo VLAN Pool"
+     vlan_pool_allocation_mode: "static"
     tasks:
+    - name: "Create VLAN Pool {{ vlan_pool_name }}"
     - name: "Create AEP {{ aep_name }}"
       import_tasks: tasks/task-create-aep.yaml  
