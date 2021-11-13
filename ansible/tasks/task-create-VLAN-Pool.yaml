@@ -26,4 +26,6 @@
     block_end: "{{ vlan_pool_block_end }}"
     pool_allocation_mode: "{{ vlan_pool_allocation_mode }}"
     state: present
+    use_proxy: no
+    validate_certs: no
   delegate_to: localhost
