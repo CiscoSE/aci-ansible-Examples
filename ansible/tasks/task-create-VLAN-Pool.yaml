@@ -24,6 +24,6 @@
     block_name: "{{ vlan_pool_block_name }}"
     block_start: "{{ vlan_pool_block_start }}"
     block_end: "{{ vlan_pool_block_end }}"
-    vlan_pool_allocation_mode: "{{ vlan_pool_allocation_mode }}"
+    pool_allocation_mode: "{{ vlan_pool_allocation_mode }}"
     state: present
   delegate_to: localhost
