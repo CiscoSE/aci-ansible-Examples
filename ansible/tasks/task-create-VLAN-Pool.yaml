@@ -14,3 +14,14 @@
     use_proxy: no
     validate_certs: no
   delegate_to: localhost
+
+- name: Add a new VLAN encap block
+  cisco.aci.aci_vlan_pool_encap_block:
+    hostname: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    pool: "{{ vlan_pool_name }}"
+    block_start: "{{ vlan_pool_block_start }}"
+    block_end: "{{ vlan_pool_block_end }}"
+    state: present
+  delegate_to: localhost

@@ -7,6 +7,8 @@
      vlan_pool_name: "Demo"
      vlan_pool_description: "Demo VLAN Pool"
      vlan_pool_allocation_mode: "static"
+     vlan_pool_block_start: 50
+     vlan_pool_block_end: 50
     tasks:
     - name: "Create VLAN Pool {{ vlan_pool_name }}"
       import_tasks: tasks/task-create-VLAN-Pool.yaml
