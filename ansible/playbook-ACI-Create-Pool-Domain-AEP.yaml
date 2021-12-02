@@ -1,7 +1,7 @@
   - name: "Pools, Domains and AEP Configuration"
     gather_facts: no
     connection: local
-    hosts: fedlabaci
+    hosts: demoExample
     vars:
      aep_name: "FEDLAB-AEP"
      vlan_pool_name: "Demo"

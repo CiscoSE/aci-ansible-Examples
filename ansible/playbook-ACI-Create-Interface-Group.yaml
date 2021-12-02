@@ -3,7 +3,7 @@
   - name: "Test Interface Policy Group"
     gather_facts: no
     connection: local
-    hosts: fedlabaci
+    hosts: demoExample
     vars:
       # This is the name of the Interface Policy Group that gets created
       # We reference it once when we create it, and once when we assign the policy to the interfaces.

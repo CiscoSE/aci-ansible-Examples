@@ -3,7 +3,7 @@
   - name: "Simple query for Tenate Information"
     gather_facts: no
     connection: local
-    hosts: fedlabaci
+    hosts: demoExample
     tasks:
     - name: Get Tenant
       aci_tenant:

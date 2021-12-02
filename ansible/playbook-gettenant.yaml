@@ -1,7 +1,7 @@
 ---
 
 - name: How to query a tenant
-  hosts: FEDLAB
+  hosts: demoExample
   gather_facts: no
   tasks:
   - name: Query all tenants
