@@ -5,9 +5,9 @@
     private_key: "{{ aci_certificate_path }}"
     certificate_name: "{{ aci_certificate_name }}"
     validate_certs: no
-    path: /api/node/mo/uni/userext/pkiext/webtokendata.json
+    path: /api/node/mo/uni/userext/pkiext/uni/webtokendata.json
     method: post
     use_proxy: no
     content: |
-      {"pkiWebTokenData": { "attributes": {"dn": "api/node/mo/uni/userext/pkiext/webtokendata", "IdleTimeoutSeconds": "1800" }}}
+      {"pkiWebTokenData": { "attributes": {"dn": "api/node/mo/uni/userext/pkiext/webtokendata", "uiIdleTimeoutSeconds": "1800" }}}
   delegate_to: localhost
