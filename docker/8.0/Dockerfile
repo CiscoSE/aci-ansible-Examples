@@ -4,7 +4,7 @@ FROM centos:latest
 # git and vim are not required but commonly used
 
 # Requirements for Ansible and the ACI sdks
-RUN dnf install python38 python38-pip git vim -y && \
+RUN dnf install python39 git vim -y && \
 pip3 install --upgrade pip
 
 # Install the Ansible and UCS compenents.
