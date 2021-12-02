@@ -1,0 +1,12 @@
+- name: "Modify COOP Policy Default on {{ inventory_hostname }} "
+  aci_rest:
+    hostname: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
+    validate_certs: no
+    path: /api/node/mo/uni/userext/pkiext/webtokendata.xml
+    method: post
+    use_proxy: no
+    content: |
+      <pkiWebTokenData dn='api/node/mo/uni/userext/pkiext/webtokendata' iIdleTimeoutSeconds="1800" />
