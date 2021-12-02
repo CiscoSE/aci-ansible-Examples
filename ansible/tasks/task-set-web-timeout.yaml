@@ -10,3 +10,4 @@
     use_proxy: no
     content: |
       <pkiWebTokenData dn='api/node/mo/uni/userext/pkiext/webtokendata' IdleTimeoutSeconds="1800" />
+  delegate_to: localhost
