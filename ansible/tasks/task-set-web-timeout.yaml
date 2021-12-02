@@ -1,4 +1,4 @@
-- name: "Modify COOP Policy Default on {{ inventory_hostname }} "
+- name: "Modify Web Timeout on {{ inventory_hostname }} "
   aci_rest:
     hostname: "{{ aci_host }}"
     username: "{{ aci_user_name }}"
@@ -9,4 +9,4 @@
     method: post
     use_proxy: no
     content: |
-      <pkiWebTokenData dn='api/node/mo/uni/userext/pkiext/webtokendata' iIdleTimeoutSeconds="1800" />
+      <pkiWebTokenData dn='api/node/mo/uni/userext/pkiext/webtokendata' IdleTimeoutSeconds="1800" />

@@ -1,0 +1,9 @@
+---
+
+  - name: "Updating Web Time Out"
+    gather_facts: no
+    connection: local
+    hosts: demoExample
+    tasks:
+    - name: Create Interface Policy Group
+      import_tasks: tasks/task-set-web-timeout.yaml
