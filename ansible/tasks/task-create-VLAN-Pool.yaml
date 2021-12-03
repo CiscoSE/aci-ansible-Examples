@@ -4,9 +4,10 @@
     #     vlan_pool_name - The name of the pool to be created
     #     vlan_pool_description - A description for the pool
     #     vlan_pool_allocation_mode - Must be static or dynamic 
-    hostname: "{{ aci_host }}"
+    host: "{{ aci_host }}"
     username: "{{ aci_user_name }}"
-    private_key: "{{ aci_certificate_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
     pool: "{{ vlan_pool_name }}"
     pool_allocation_mode: "{{ vlan_pool_allocation_mode }}"
     description: "{{ vlan_pool_description }}"
@@ -17,9 +18,10 @@
 
 - name: Add a new VLAN encap block
   cisco.aci.aci_vlan_pool_encap_block:
-    hostname: "{{ aci_host }}"
+    host: "{{ aci_host }}"
     username: "{{ aci_user_name }}"
-    private_key: "{{ aci_certificate_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
     pool: "{{ vlan_pool_name }}"
     block_name: "{{ vlan_pool_block_name }}"
     block_start: "{{ vlan_pool_block_start }}"
