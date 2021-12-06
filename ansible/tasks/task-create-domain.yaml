@@ -1,0 +1,12 @@
+- name: "Add a new {{ vlan_domain_type }} {{ vlan_pool_name }}"
+  cisco.aci.aci_domain:
+    use_proxy: no
+    validate_certs: "no"
+    hostname: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
+    domain: "{{ vlan_pool_name }}"
+    vlan_domain_type: "{{ vlan_domain_type }}"
+    state: present
+  delegate_to: localhost
