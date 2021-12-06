@@ -12,7 +12,7 @@
   delegate_to: localhost
 
 - name: "Map Domain {{ domain_name }} to Pool {{ vlan_pool_name }}"
-  aci.aci_domain_to_encap_pool:
+  cisco.aci.aci_domain_to_encap_pool:
     use_proxy: no
     validate_certs: "no"
     hostname: "{{ aci_host }}"
