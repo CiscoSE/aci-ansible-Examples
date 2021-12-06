@@ -9,5 +9,5 @@
     method: post
     use_proxy: no
     content: |
-      {"pkiWebTokenData": { "attributes": {"dn": "uni/userext/pkiext/webtokendata", "uiIdleTimeoutSeconds": "1800" }}}
+      {"pkiWebTokenData": { "attributes": {"dn": "uni/userext/pkiext/webtokendata", "uiIdleTimeoutSeconds": "{{ timeout_value }}" }}}
   delegate_to: localhost
