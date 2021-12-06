@@ -20,7 +20,7 @@
     private_key: "{{ aci_certificate_path }}"
     certificate_name: "{{ aci_certificate_name }}"
     domain: "{{ domain_name }}"
-    pool: "{{ vlan_domain_name }}"
+    pool: "{{ vlan_pool_name }}"
     pool_type: "{{ vlan_domain_type }}"
     pool_allocation_mode: "{{ pool_allocation_mode }}"
     state: present
