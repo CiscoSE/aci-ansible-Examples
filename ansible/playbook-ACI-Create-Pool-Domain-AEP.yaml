@@ -16,6 +16,8 @@
     - name: "Create VLAN Domain"
       vars:
         vlan_domain_type: "phys"
+        domain_name: "{{ vlan_pool_name }}"
+        pool_allocation_mode: "static"
       import_tasks: tasks/task-create-domain.yaml
     - name: "Create AEP {{ aep_name }}"
       import_tasks: tasks/task-create-aep.yaml  
