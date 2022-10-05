@@ -1,0 +1,10 @@
+  - name: "Tenant EPG Operations"
+    gather_facts: no
+    connection: local
+    hosts: demoExample
+    vars:
+      TenantName: "Sam-API-Demo"
+      deploymentStatus: "present" # "present" creates these objects, "absent" destroys the demo
+    tasks:
+    - name: "Create Elements of the demo"
+      import_tasks: tasks/task-create-tenant.yaml
