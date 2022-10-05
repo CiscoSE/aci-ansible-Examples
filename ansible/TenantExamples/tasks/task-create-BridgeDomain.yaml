@@ -8,6 +8,7 @@
     certificate_name: "{{ aci_certificate_name }}"
     tenant: "{{ TenantName }}"
     bd: "{{ BD_Name }}"
+    vrf: "{{ VRF_Name }}"
     state: "{{ deploymentStatus }}"
   delegate_to: localhost
   tags:
