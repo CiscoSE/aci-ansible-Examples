@@ -10,8 +10,10 @@
       BD_Mask: 24                 # The mask for the gateway on the bridge domain.
       deploymentStatus: "present" # "present" creates these objects, "absent" destroys the demo
       BD_Subnet_Scope: ["shared","public"]   # Advertized outside the fabric and shared between VRFs
+      AP_Name: "Sam-Demo-AP"      # Application Profile Name
     tasks:
     #- name: "Create Elements of the demo"
     - import_tasks: tasks/task-create-tenant.yaml
     - import_tasks: tasks/task-create-vrf.yaml
     - import_tasks: tasks/task-create-BridgeDomain.yaml
+    - import_tasks: tasks/task-create-ap.yaml

@@ -1,0 +1,18 @@
+- name: "Create Application Profile {{ AP_Name }}"
+  cisco.aci.aci_ap:
+    use_proxy: no
+    validate_certs: "no"
+    hostname: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
+    tenant: "{{ TenantName }}"
+    ap: "{{ AP_Name }}"
+    state: "{{ deploymentStatus }}"
+  delegate_to: localhost
+  tags:
+  - app
+
+# App Profile Documentation
+# https://docs.ansible.com/ansible/latest/collections/cisco/aci/aci_ap_module.html#ansible-collections-cisco-aci-aci-ap-module
+
