@@ -1,0 +1,38 @@
+- name: "Create Bridge Domain {{ BD_Name }}"
+  cisco.aci.aci_bd:
+    use_proxy: no
+    validate_certs: "no"
+    hostname: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
+    tenant: "{{ TenantName }}"
+    bd: "{{ BD_Name }}"
+    state: "{{ deploymentStatus }}"
+  delegate_to: localhost
+  tags:
+  - bridgedomain
+
+# Bridge Domain Documentation
+# https://docs.ansible.com/ansible/latest/collections/cisco/aci/aci_bd_module.html#ansible-collections-cisco-aci-aci-bd-module
+
+- name: "Add subnet to Created Bridge Domain"
+  cisco.aci.aci_bd_subnet:
+    use_proxy: no
+    validate_certs: "no"
+    hostname: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
+    tenant: "{{ TenantName }}"
+    bd: "{{ BD_Name }}"
+    state: "{{ deploymentStatus }}"
+    gateway: "{{ BD_Gateway }}"
+    mask: "{{ BD_Mask }}"
+    scope: "{{ BD_Subnet_Scope }}"
+  delegate_to: localhost
+  tags:
+  - subnet
+
+# Subnet Documentation
+# https://docs.ansible.com/ansible/latest/collections/cisco/aci/aci_bd_subnet_module.html#ansible-collections-cisco-aci-aci-bd-subnet-module
