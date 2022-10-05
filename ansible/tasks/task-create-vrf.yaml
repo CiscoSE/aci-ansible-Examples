@@ -1,0 +1,19 @@
+- name: "Create VRF {{ VRF_Name }}"
+  cisco.aci.aci_vrf:
+    use_proxy: no
+    validate_certs: "no"
+    hostname: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
+    tenant: "{{ TenantName }}"
+    vrf: "{{ VRF_Name }}"
+    policy_control_preference: "enforced" # The alternative is unenforced
+    preferred_group: "disabled"
+    state: "{{ deploymentStatus }}"
+  delegate_to: localhost
+  tags:
+  - vrf
+
+# Tenant Documentation
+# https://docs.ansible.com/ansible/latest/collections/cisco/aci/aci_vrf_module.html#ansible-collections-cisco-aci-aci-vrf-module

@@ -4,7 +4,9 @@
     hosts: demoExample
     vars:
       TenantName: "Sam-API-Demo"
+      VRF_Name: "Sam-API-Demo-VRF"
       deploymentStatus: "present" # "present" creates these objects, "absent" destroys the demo
     tasks:
     - name: "Create Elements of the demo"
       import_tasks: tasks/task-create-tenant.yaml
+      import_tasks: tasks/task-create-vrf.yaml
