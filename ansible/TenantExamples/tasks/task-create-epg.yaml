@@ -1,0 +1,20 @@
+- name: "Create Unenforced End Point Group {{ EPG_Name }}"
+  cisco.aci.aci_epg:
+    use_proxy: no
+    validate_certs: "no"
+    hostname: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
+    tenant: "{{ TenantName }}"
+    ap: "{{ AP_Name }}"
+    bd: "{{ BD_Name }}"
+    intra_epg_isolation: "unenforced" # If "enforced", requires two VLANs for Primary and isolated
+    epg: "{{ EPG_Name }}"
+    state: "{{ deploymentStatus }}"
+  delegate_to: localhost
+  tags:
+  - epg
+
+# End Point Group Documentation
+# https://docs.ansible.com/ansible/latest/collections/cisco/aci/aci_epg_module.html

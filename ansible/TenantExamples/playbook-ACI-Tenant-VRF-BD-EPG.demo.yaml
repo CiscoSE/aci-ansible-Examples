@@ -11,9 +11,11 @@
       deploymentStatus: "present" # "present" creates these objects, "absent" destroys the demo
       BD_Subnet_Scope: ["shared","public"]   # Advertized outside the fabric and shared between VRFs
       AP_Name: "Sam-Demo-AP"      # Application Profile Name
+      EPG_Name: "Sam-Demo-EPG1"   # End Point Group Name
     tasks:
     #- name: "Create Elements of the demo"
     - import_tasks: tasks/task-create-tenant.yaml
     - import_tasks: tasks/task-create-vrf.yaml
     - import_tasks: tasks/task-create-BridgeDomain.yaml
     - import_tasks: tasks/task-create-ap.yaml
+    - import_tasks: tasks/task-create-epg.yaml
