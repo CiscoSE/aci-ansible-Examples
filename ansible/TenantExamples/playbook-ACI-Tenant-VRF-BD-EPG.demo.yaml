@@ -8,7 +8,6 @@
       BD_Name: "Sam-Demo1-BD"
       BD_Gateway: "192.168.99.1"  # The gateway for the bridge Bridge Domain Domain
       BD_Mask: 24                 # The mask for the gateway on the bridge domain.
-      deploymentStatus: "present" # "present" creates these objects, "absent" destroys the demo
       BD_Subnet_Scope: ["shared","public"]   # Advertized outside the fabric and shared between VRFs
       AP_Name: "Sam-Demo-AP"      # Application Profile Name
       EPG_Name: "Sam-Demo-EPG1"   # End Point Group Name
