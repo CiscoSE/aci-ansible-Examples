@@ -12,6 +12,9 @@
       BD_Subnet_Scope: ["shared","public"]   # Advertized outside the fabric and shared between VRFs
       AP_Name: "Sam-Demo-AP"      # Application Profile Name
       EPG_Name: "Sam-Demo-EPG1"   # End Point Group Name
+      EPG_Domain_Type: "vmm"      # Specifies Virtual Networking
+      EPG_Domain_Provider: "vmware"   # Virtual Networking is VMWare supported
+      EPG_Domain_Name: "AJ430_APIC" # Example Domain Name in VMWare VMM integration
     tasks:
     #- name: "Create Elements of the demo"
     - import_tasks: tasks/task-create-tenant.yaml

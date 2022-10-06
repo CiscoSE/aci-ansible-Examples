@@ -18,3 +18,28 @@
 
 # End Point Group Documentation
 # https://docs.ansible.com/ansible/latest/collections/cisco/aci/aci_epg_module.html
+
+- name: "Assign Domain Mapping to End Point Group {{ EPG_Name }}"
+  cisco.aci.aci_epg_to_domain:
+    use_proxy: no
+    validate_certs: "no"
+    hostname: "{{ aci_host }}"
+    username: "{{ aci_user_name }}"
+    private_key: "{{ aci_certificate_path }}"
+    certificate_name: "{{ aci_certificate_name }}"
+    tenant: "{{ TenantName }}" 
+    ap: "{{ AP_Name }}"
+    epg: "{{ EPG_Name }}"
+    domain: "{{ EPG_Domain_Name}}"
+    domain_type: "{{ EPG_Domain_Type }}"
+    vm_provider: "{{ EPG_Domain_Provider}}"
+    resolution_immediacy: "immediate"
+    promiscuous: "reject"
+    deploy_immediacy: "immediate"
+  delegate_to: localhost
+  tags:
+  - epg
+  - egp_domain
+
+# End Point Group Mapping to Domain Documentation 
+#https://docs.ansible.com/ansible/latest/collections/cisco/aci/aci_epg_to_domain_module.html#ansible-collections-cisco-aci-aci-epg-to-domain-module
