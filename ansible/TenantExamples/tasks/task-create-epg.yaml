@@ -36,6 +36,7 @@
     resolution_immediacy: "immediate"
     promiscuous: "reject"
     deploy_immediacy: "immediate"
+    state: "{{ deploymentStatus }}"
   delegate_to: localhost
   tags:
   - epg
