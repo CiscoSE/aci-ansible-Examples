@@ -1,0 +1,10 @@
+---
+
+- name: Register a Switch
+  hosts: APICs
+  gather_facts: no
+  vars_files:
+    - variables/switches.yaml
+  tasks:
+  - name: Register switches
+    import_tasks: ./tasks/register_switch.yaml

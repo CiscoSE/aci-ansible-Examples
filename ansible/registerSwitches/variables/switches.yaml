@@ -1,0 +1,16 @@
+switches:
+- serial_number: "TEP-1-101"
+  role: "leaf"
+  node_id: "101"
+  name: "L101"
+  discovery_time_seconds: 120
+- serial_number: "TEP-1-103"
+  role: "spine"
+  node_id: "201"
+  name: "S201"
+  discovery_time_seconds: 120
+- serial_number: "TEP-1-102"
+  role: "leaf"
+  node_id: "L102"
+  name: "L102"
+  discovery_time_seconds: 120

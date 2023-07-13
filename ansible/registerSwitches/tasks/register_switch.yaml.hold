@@ -1,0 +1,30 @@
+---  
+
+- name: Register a Switch
+  aci_rest:
+    host: "{{ apic_host }}"
+    username: "{{ apic_user_name }}"
+    password: "{{ ansible_password }}"
+    validate_certs: no
+    path: /api/node/mo/uni/controller/nodeidentpol.json
+    method: post
+    content: |
+      {
+      "fabricNodeIdentP":{
+        "attributes":{
+          "dn":"uni/controller/nodeidentpol/nodep-TEP-1-103",
+          "serial":"TEP-1-103",
+          "nodeId":"201",
+          "role": "3",
+          "name":"S201",
+          "status":"created,modified"
+          },
+          "children":[]}
+      }
+
+  delegate_to: localhost
+  register: my_result
+
+- name: Debug some stuff
+  debug:
+    var: my_result
